@@ -177,10 +177,23 @@ export const deng_M = new THREE.MeshBasicMaterial({
   depthFunc: 3,
 });
 
+export const dm = new THREE.TextureLoader().load(
+  "./assets/room2/textures/hhsadff_1.jpg"
+);
+export const dm_M = new THREE.MeshBasicMaterial({
+  // color: 0xffeb00,
+  reflectivity: 1,
+  // transparent: true,
+  depthWrite: false,
+  // depthFunc: 3,
+  map: dm,
+  // opacity: 1,
+});
+
 export const wall = new THREE.TextureLoader().load(
   "./assets/room2/textures/jianjieqiang_MA.jpg"
 );
-export const dm_M = new THREE.MeshBasicMaterial({
+export const wall_M = new THREE.MeshBasicMaterial({
   // color: 0xffeb00,
   // reflectivity: 0,
   // transparent: true,

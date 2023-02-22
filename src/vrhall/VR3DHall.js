@@ -109,8 +109,8 @@ export class VR3DHall {
 
   // 镜面反射
   _reflectorPlane() {
-    // 镜面
     const size = 1000;
+    // 镜面
     const geometry = new THREE.PlaneBufferGeometry(size, size);
     const verticalMirror = new Reflector(geometry, {
       opacity: 0.1,
@@ -118,11 +118,11 @@ export class VR3DHall {
       textureHeight: size,
       color: "#fff",
     });
-    // const { scale } = this._params;
+    verticalMirror.material.side = THREE.DoubleSide;
     verticalMirror.material.transparent = true;
     verticalMirror.material.opacity = 0.1;
     verticalMirror.rotation.x = -Math.PI / 2;
-    verticalMirror.position.y = this._planeMesh.position.y - 0.01;
+    verticalMirror.position.y = this._planeMesh.position.y + 0.1;
     this._scene.add(verticalMirror);
   }
 
@@ -493,8 +493,9 @@ export class VR3DHall {
           this._planeMesh = mesh;
         }
       });
+      // 反光
+      // this._reflectorPlane();
       params.callback(gltf);
-      this._reflectorPlane();
     };
     await this.loadGLTF({ ...params, callback });
   }
