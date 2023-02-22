@@ -5,7 +5,7 @@ import { TransformControls } from "three/examples/jsm/controls/TransformControls
 import { Reflector } from "./Reflector";
 import offset from "offset";
 import Gravity from "./Gravity";
-// import { VRButton } from "three/examples/jsm/webxr/VRButton.js";
+import { VRButton } from "three/examples/jsm/webxr/VRButton.js";
 
 CameraControls.install({ THREE: THREE });
 
@@ -14,21 +14,22 @@ export class VRHall {
    * 外部传入的配置
    */
   _options = {
+    debugger: false, // 开启调试模式
+    maxSize: 20, // 画框的尺寸
     // 移动高度
-    movieHight: -1,
+    movieHight: 2,
     // 容器
     container: document.body,
     // 点击元素回调函数
     onClick: null,
     // 相机配置
-    // cameraOption: {
-    //   height: 0.1,
-    //   position: { x: 16.928, y: 0.1, z: 0.699 },
-    //   lookAt: { x: 30.551, y: 0.1, z: 1.096 },
-    // },
+    cameraOption: {
+      position: { x: 0, y: 2, z: 0 },
+      lookAt: { x: 2, y: 2, z: 2 },
+    },
   };
 
-  // 尺寸
+  // 默认尺寸
   _size = {
     width: window.innerWidth,
     height: window.innerHeight,
@@ -97,11 +98,41 @@ export class VRHall {
     this.gravity = new Gravity(this._controls);
   }
 
-  // initVRButton(target = document.body) {
-  //   this._renderer.xr.enabled = true;
-  //   this._renderer.xr.setReferenceSpaceType("local");
-  //   target.appendChild(VRButton.createButton(this._renderer));
-  // }
+  initVRButton = (target = document.body) => {
+    this._renderer.xr.enabled = true;
+    this._renderer.xr.setReferenceSpaceType("local");
+    target.appendChild(VRButton.createButton(this._renderer));
+
+    // this.train = new THREE.Object3D();
+    // this.train.add(this._camera);
+    // this._scene.add(this.train);
+
+    // // VR
+    // this.controllervr1 = this._renderer.xr.getController(0);
+    // this.controllervr1.addEventListener("selectstart", this.onVRSelectStart);
+    // this.train.add(this.controllervr1);
+
+    // this.controllervr2 = this._renderer.xr.getController(1);
+    // this.controllervr2.addEventListener("selectstart", this.onVRSelectStart);
+    // this.train.add(this.controllervr2);
+
+    // const geometry = new THREE.BufferGeometry().setFromPoints([
+    //   new THREE.Vector3(0, 0, 0),
+    //   new THREE.Vector3(0, 0, -1),
+    // ]);
+    // const line = new THREE.Line(geometry);
+    // line.name = "line";
+    // line.scale.z = 5;
+    // this.controllervr1.add(line.clone());
+    // this.controllervr2.add(line.clone());
+
+    //     setTimeout(() => {
+    //       // 初始位置
+    //       const { position, lookAt } = this._options.cameraOption;
+    //       this._camera.position.set(position.x, position.y, position.z);
+    //       this._camera.lookAt(lookAt.x, lookAt.y, lookAt.z);
+    //     }, 1000);
+  };
 
   addAnimate(afun) {
     this._animates.push(afun);

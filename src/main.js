@@ -3,6 +3,7 @@ import * as THREE from "three";
 import VRHall from "./vrhall";
 // import VRHall from "./lib/vrhall.es";
 import { data } from "./pictures2";
+import Zoomtastic from "zoomtastic";
 
 // 因为模型所需，正常的gltf模型是不需要手动设置贴图的，这里是网上找的模型
 import * as m from "./materls";
@@ -12,7 +13,7 @@ window.onload = function () {
   const vr = new VRHall({
     debugger: false, // 开启调试模式
     maxSize: 20, // 画框最大尺寸
-    movieHight: 2,
+    movieHight: 2, // 移动的高度
     container: document.getElementById("root"),
     cameraOption: {
       position: { x: 16.928, y: 2, z: 0.699 },
@@ -20,9 +21,12 @@ window.onload = function () {
     },
     onClick: (item) => {
       console.log("你点击了", item);
-      alert("您点击了" + item.id);
+      Zoomtastic.show(item.url);
+      // alert(JSON.stringify(item, null, 2));
     },
   });
+
+  Zoomtastic.mount();
 
   // 加载厅模型
   vr.loadHall({
@@ -125,6 +129,8 @@ window.onload = function () {
   // 加载画框数据
   vr.loadItems(data);
 
+  // vr.initVRButton();
+
   // 导览点
   let shtml = "";
   data.forEach((d) => {
@@ -132,9 +138,9 @@ window.onload = function () {
   });
   shtml += `<li class="gravity">重力感应</li>`;
 
-  $(".view").html(shtml);
+  document.querySelector(".view").innerHTML = shtml;
 
-  $(".gravity").on("click", function () {
+  document.querySelector(".gravity").addEventListener("click", () => {
     if (document.location.protocol === "https:") {
       vr.gravity.toggle();
     } else {
@@ -142,8 +148,10 @@ window.onload = function () {
     }
   });
 
-  $(".item").on("click", function () {
-    const id = $(this).attr("data-id");
-    vr.viewItem(id);
+  document.querySelectorAll(".item").forEach((target) => {
+    target.addEventListener("click", () => {
+      const id = target.dataset.id;
+      vr.viewItem(id);
+    });
   });
 };

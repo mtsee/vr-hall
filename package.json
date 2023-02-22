@@ -11,7 +11,8 @@
   "dependencies": {
     "camera-controls": "^1.37.4",
     "offset": "^0.0.1",
-    "three": "^0.148.0"
+    "three": "^0.148.0",
+    "zoomtastic": "^2.2.1"
   },
   "devDependencies": {
     "less": "^4.1.3",
