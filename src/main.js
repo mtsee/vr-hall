@@ -9,7 +9,7 @@ import * as m from "./materls";
 window.onload = function () {
   // 实例化
   const vr = new VR3DHall({
-    debugger: false, // 开启调试模式
+    debugger: true, // 开启调试模式
     maxSize: 20, // 画框最大尺寸
     movieHight: 2,
     container: document.getElementById("root"),
@@ -97,10 +97,16 @@ window.onload = function () {
   // 加载机器人
   vr.loadGLTF({
     url: "./assets/robot/robot.glb",
-    position: { x: 20.524, y: 0.01, z: 0.319 },
+    position: {
+      x: 19.655541400079763,
+      y: 0.3955837972716467,
+      z: 3.3849787954383963,
+    },
     rotation: { x: 0, y: -Math.PI / 2, z: 0 },
     scale: 0.4,
     callback: (gltf) => {
+      gltf.scene.odata = { id: "robot" };
+      vr.addClickEvent(gltf.scene);
       // 调用动画
       const mixer = new THREE.AnimationMixer(gltf.scene);
       const ani = gltf.animations[0];

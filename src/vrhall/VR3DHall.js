@@ -107,6 +107,11 @@ export class VR3DHall {
     this._animates.push(afun);
   }
 
+  // 加入到可点击元素
+  addClickEvent(mesh) {
+    this._eventMeshs.push(mesh);
+  }
+
   // 镜面反射
   _reflectorPlane() {
     const size = 1000;
@@ -245,29 +250,38 @@ export class VR3DHall {
     this._controls.saveState();
     const lookatV3 = new THREE.Vector3(position.x, position.y, position.z);
     lookatV3.lerp(new THREE.Vector3(lookat.x, lookat.y, lookat.z), this._EPS);
-    return new Promise((resolve) => {
-      // 获取当前的lookAt参数
-      const fromPosition = new THREE.Vector3();
-      const fromLookAt = new THREE.Vector3();
-      this._controls.getPosition(fromPosition);
-      this._controls.getTarget(fromLookAt);
 
-      const lookatV3 = new THREE.Vector3(position.x, position.y, position.z);
-      lookatV3.lerp(new THREE.Vector3(lookat.x, lookat.y, lookat.z), this._EPS);
+    // 获取当前的lookAt参数
+    const fromPosition = new THREE.Vector3();
+    const fromLookAt = new THREE.Vector3();
+    this._controls.getPosition(fromPosition);
+    this._controls.getTarget(fromLookAt);
 
-      this._controls.setLookAt(
-        position.x,
-        position.y,
-        position.z,
-        lookatV3.x,
-        lookatV3.y,
-        lookatV3.z,
-        true
-      );
-      // setTimeout(() => {
-      //   resolve();
-      // }, duration * 1000);
-    });
+    const lookatV32 = new THREE.Vector3(position.x, position.y, position.z);
+    lookatV32.lerp(new THREE.Vector3(lookat.x, lookat.y, lookat.z), this._EPS);
+
+    this._controls.setLookAt(
+      position.x,
+      position.y,
+      position.z,
+      lookatV3.x,
+      lookatV3.y,
+      lookatV3.z,
+      true
+    );
+  }
+
+  _findParentOdata(mesh) {
+    if (mesh.odata) {
+      console.log(mesh);
+      return mesh;
+    } else {
+      if (mesh.parent) {
+        return this._findParentOdata.bind(this)(mesh.parent);
+      } else {
+        return null;
+      }
+    }
   }
 
   /**
@@ -294,14 +308,17 @@ export class VR3DHall {
       // 点击元素
       const mesh = intersect.object;
 
+      // 因为被点击的元素可能是子元素，所以要溯源，找到父元素的odata
+      const odataMesh = this._findParentOdata(mesh);
+
       // 如果点击的是画框，初始化控制器
-      if (this._options.debugger && mesh.odata && this._transformControls) {
-        this._transformControls.attach(mesh);
+      if (this._options.debugger && odataMesh && this._transformControls) {
+        this._transformControls.attach(odataMesh);
       }
 
       // 元素点击事件
-      if (mesh.odata && this._options.onClick) {
-        this._options.onClick(mesh.odata);
+      if (odataMesh && this._options.onClick) {
+        this._options.onClick(odataMesh.odata);
       }
 
       return { position: v3, lookat, mesh };
@@ -542,7 +559,6 @@ export class VR3DHall {
       cube.rotation.set(item.rotation.x, item.rotation.y, item.rotation.z);
       cube.scale.set(item.scale.x, item.scale.y, item.scale.z);
       cube.position.set(item.position.x, item.position.y, item.position.z);
-      window["cube_" + item.id] = cube;
       cube.odata = item;
       this._scene.add(cube);
       this._eventMeshs.push(cube);
