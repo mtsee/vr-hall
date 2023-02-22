@@ -9,7 +9,7 @@ import * as m from "./materls";
 window.onload = function () {
   // 实例化
   const vr = new VR3DHall({
-    debugger: true, // 开启调试模式
+    debugger: false, // 开启调试模式
     maxSize: 20, // 画框最大尺寸
     movieHight: 2,
     container: document.getElementById("root"),
@@ -19,6 +19,7 @@ window.onload = function () {
     },
     onClick: (item) => {
       console.log("你点击了", item);
+      alert("您点击了" + item.id);
     },
   });
 

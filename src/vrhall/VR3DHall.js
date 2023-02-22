@@ -134,6 +134,7 @@ export class VR3DHall {
     this._renderer = new THREE.WebGLRenderer({
       antialias: true, // 抗锯齿
       alpha: true,
+      transparent: true,
       logarithmicDepthBuffer: true, // 解决部分Z-Fighting问题，会消耗性能, 安卓开启
     });
     this._renderer.setPixelRatio(window.devicePixelRatio);
