@@ -54,4 +54,15 @@ window.onload = function () {
 
   // 加载画框数据
   vr.loadItems(data);
+
+  // 导览点
+  let shtml = "";
+  data.forEach((d) => {
+    shtml += `<li class="item" data-id="${d.id}">${d.name}</li>`;
+  });
+  $(".view").html(shtml);
+  $(".item").on("click", function () {
+    const id = $(this).attr("data-id");
+    vr.viewItem(id);
+  });
 };

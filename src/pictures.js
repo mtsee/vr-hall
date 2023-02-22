@@ -27,8 +27,12 @@ export const data = [
       z: 0.025612307671229958,
     },
     rotation: { x: 0, y: 0, z: 0 },
-    view: { x: 0, y: 0, z: 0 }, // 预览点的位置，移动到这里，看向position
-    name: "名字", // 名字
+    view: {
+      x: -0.6808147304324663,
+      y: 1.5,
+      z: 5.7431132567302114,
+    }, // 预览点的位置，移动到这里，看向position
+    name: "作品1", // 名字
     desc: "描述说明", // 描述说明
     url: "/assets/pictures/1.jpg", // 资源url
     type: "picture", // 'gltf' | 'picture' | 'dot'; // gltf模型，图画模型，图画要自定义画框
@@ -47,8 +51,12 @@ export const data = [
       z: 0.025612307671229958,
     },
     rotation: { x: 0, y: 0, z: 0 },
-    view: { x: 0, y: 0, z: 0 }, // 预览点的位置，移动到这里，看向position
-    name: "名字", // 名字
+    view: {
+      x: -2.2210788440656213,
+      y: 1.5,
+      z: 5.686784229447569,
+    }, // 预览点的位置，移动到这里，看向position
+    name: "作品2", // 名字
     desc: "描述说明", // 描述说明
     url: "/assets/pictures/2.jpg", // 资源url
     type: "picture", // 'gltf' | 'picture' | 'dot'; // gltf模型，图画模型，图画要自定义画框
@@ -67,8 +75,12 @@ export const data = [
       z: 0.025612307671229958,
     },
     rotation: { x: 0, y: 0, z: 0 },
-    view: { x: 0, y: 0, z: 0 }, // 预览点的位置，移动到这里，看向position
-    name: "名字", // 名字
+    view: {
+      x: -3.3858185497101987,
+      y: 1.5,
+      z: 5.641229967374976,
+    }, // 预览点的位置，移动到这里，看向position
+    name: "作品3", // 名字
     desc: "描述说明", // 描述说明
     url: "/assets/pictures/3.jpg", // 资源url
     type: "picture", // 'gltf' | 'picture' | 'dot'; // gltf模型，图画模型，图画要自定义画框

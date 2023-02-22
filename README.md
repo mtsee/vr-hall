@@ -110,6 +110,13 @@ export const data = [
 vr.loadItems(data);
 ```
 
+# 导览
+
+```javascript
+// 切换到对应的展品ID的视角
+vr.viewItem(itemId);
+```
+
 # 开启和关闭重力感应
 
 开启关闭重力感应必须在 callback 后执行

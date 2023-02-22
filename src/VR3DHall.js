@@ -64,6 +64,9 @@ export class VRHall {
   // 事件
   _events = {};
 
+  // 展品数据
+  _itemsData = [];
+
   // 动画
   _animates = [];
 
@@ -191,6 +194,16 @@ export class VRHall {
     this._size.width = this._options.container.clientWidth;
     this._size.height = this._options.container.clientHeight;
     this._renderer.setSize(this._size.width, this._size.height);
+  }
+
+  // 查看作品
+  viewItem(id) {
+    const item = this._itemsData.find((d) => d.id === id);
+    if (item) {
+      this.moveTo(item.view, item.position);
+    } else {
+      console.error("id不存在", id);
+    }
   }
 
   /**
@@ -453,14 +466,10 @@ export class VRHall {
   }
 
   /**
-   * 载入展台数据
-   */
-  loadBooth() {}
-
-  /**
    * 载入展品数据
    */
   loadItems(data) {
+    this._itemsData = data;
     const { maxSize } = this._options;
     data.forEach(async (item) => {
       const texture = await this._textLoader.loadAsync(item.url);

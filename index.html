@@ -4,10 +4,29 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Vite + Threejs</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <style>
+      .view {
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 100;
+      }
+      .view li {
+        cursor: pointer;
+        list-style: none;
+        padding: 5px 20px;
+        background: #fff;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+    </style>
   </head>
   <body>
     <div id="root">hello</div>
+    <ul class="view"></ul>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
