@@ -1,17 +1,6 @@
-import {
-  Color,
-  Matrix4,
-  Mesh,
-  PerspectiveCamera,
-  Plane,
-  ShaderMaterial,
-  UniformsUtils,
-  Vector3,
-  Vector4,
-  WebGLRenderTarget,
-} from "three";
+import * as THREE from "three";
 
-class Reflector extends Mesh {
+class Reflector extends THREE.Mesh {
   isReflector;
   camera;
   static ReflectorShader;
@@ -23,14 +12,14 @@ class Reflector extends Mesh {
     this.isReflector = true;
 
     this.type = "Reflector";
-    this.camera = new PerspectiveCamera();
+    this.camera = new THREE.PerspectiveCamera();
 
     const scope = this;
 
     const color =
       options.color !== undefined
-        ? new Color(options.color)
-        : new Color(0x7f7f7f);
+        ? new THREE.Color(options.color)
+        : new THREE.Color(0x7f7f7f);
     const textureWidth = options.textureWidth || 512;
     const opacity = options.opacity || 1;
     const textureHeight = options.textureHeight || 512;
@@ -41,27 +30,31 @@ class Reflector extends Mesh {
 
     //
 
-    const reflectorPlane = new Plane();
-    const normal = new Vector3();
-    const reflectorWorldPosition = new Vector3();
-    const cameraWorldPosition = new Vector3();
-    const rotationMatrix = new Matrix4();
-    const lookAtPosition = new Vector3(0, 0, -1);
-    const clipPlane = new Vector4();
+    const reflectorPlane = new THREE.Plane();
+    const normal = new THREE.Vector3();
+    const reflectorWorldPosition = new THREE.Vector3();
+    const cameraWorldPosition = new THREE.Vector3();
+    const rotationMatrix = new THREE.Matrix4();
+    const lookAtPosition = new THREE.Vector3(0, 0, -1);
+    const clipPlane = new THREE.Vector4();
 
-    const view = new Vector3();
-    const target = new Vector3();
-    const q = new Vector4();
+    const view = new THREE.Vector3();
+    const target = new THREE.Vector3();
+    const q = new THREE.Vector4();
 
-    const textureMatrix = new Matrix4();
+    const textureMatrix = new THREE.Matrix4();
     const virtualCamera = this.camera;
 
     //@ts-ignore
-    const renderTarget = new WebGLRenderTarget(textureWidth, textureHeight, {
-      samples: multisample,
-    });
+    const renderTarget = new THREE.WebGLRenderTarget(
+      textureWidth,
+      textureHeight,
+      {
+        samples: multisample,
+      }
+    );
 
-    const material = new ShaderMaterial({
+    const material = new THREE.ShaderMaterial({
       uniforms: UniformsUtils.clone(shader.uniforms),
       fragmentShader: shader.fragmentShader,
       vertexShader: shader.vertexShader,

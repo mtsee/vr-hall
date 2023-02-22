@@ -1,24 +1,24 @@
 import { defineConfig } from "vite";
 import path from "path";
+import { viteExternalsPlugin } from "vite-plugin-externals";
 import vitePluginImp from "vite-plugin-imp";
-
-//@ts-ignore
 const resolve = (url) => path.resolve(__dirname, url);
-// import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  // plugins: [react()],
   plugins: [
-    vitePluginImp({
-      libList: [
-        {
-          libName: "three",
-          libDirectory: "",
-          camel2DashComponentName: false,
-        },
-      ],
+    viteExternalsPlugin({
+      three: "THREE",
     }),
+    // vitePluginImp({
+    //   libList: [
+    //     {
+    //       libName: "three",
+    //       libDirectory: "",
+    //       camel2DashComponentName: false,
+    //     },
+    //   ],
+    // }),
   ],
   css: {
     modules: {
@@ -34,15 +34,15 @@ export default defineConfig({
   // 入口
   build: {
     lib: {
-      entry: resolve("src/VRHall.js"),
-      name: "vrHall",
-      fileName: (format) => `core/vrHall.${format}.js`,
+      entry: resolve("src/vrhall/index.js"),
+      name: "VRHall",
+      fileName: (format) => `lib/vrhall.${format}.js`,
     },
-    rollupOptions: {
-      input: {
-        main: resolve("index.html"),
-      },
-    },
+    // rollupOptions: {
+    //   input: {
+    //     main: resolve("index.html"),
+    //   },
+    // },
   },
   base: "/", // 公共基础路径
   server: {

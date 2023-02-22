@@ -18,6 +18,14 @@ export default class Gravity {
     this._controls = params.controls;
   }
 
+  toggle = () => {
+    if (this.enableOrienter) {
+      this.close();
+    } else {
+      this.open();
+    }
+  };
+
   // 重力感应
   open = () => {
     this.enableOrienter = true;
@@ -73,5 +81,11 @@ export default class Gravity {
         );
       },
     });
+  }
+
+  destroy() {
+    // 销毁
+    this._orienter = null;
+    this._controls = null;
   }
 }

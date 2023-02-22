@@ -1,6 +1,6 @@
 export const data = [
   {
-    url: "./assets/pictures/1.jpg",
+    url: "./assets/pictures2/1.jpg",
     name: "名称",
     desc: "信息描述",
     scale: { x: 0.1, y: 0.1, z: 0.1 },
@@ -11,7 +11,7 @@ export const data = [
     type: "picture",
   },
   {
-    url: "./assets/pictures/2.jpg",
+    url: "./assets/pictures2/2.jpg",
     name: "名称",
     desc: "信息描述",
     view: { x: 19.101, y: 2.1, z: 6.731 },
@@ -26,7 +26,7 @@ export const data = [
     type: "picture",
   },
   {
-    url: "./assets/pictures/3.jpg",
+    url: "./assets/pictures2/3.jpg",
     name: "名称",
     desc: "信息描述",
     view: { x: 13.661, y: 2.1, z: 6.12 },
@@ -42,7 +42,7 @@ export const data = [
   },
   // ----
   {
-    url: "./assets/pictures/4.jpg",
+    url: "./assets/pictures2/4.jpg",
     name: "名称",
     desc: "信息描述",
     scale: { x: 0.1, y: 0.1, z: 0.1 },
@@ -57,7 +57,7 @@ export const data = [
     type: "picture",
   },
   {
-    url: "./assets/pictures/5.jpg",
+    url: "./assets/pictures2/5.jpg",
     name: "名称",
     desc: "信息描述",
     scale: { x: 0.1, y: 0.1, z: 0.1 },
@@ -72,7 +72,7 @@ export const data = [
     type: "picture",
   },
   {
-    url: "./assets/pictures/6.jpg",
+    url: "./assets/pictures2/6.jpg",
     name: "名称",
     desc: "信息描述",
     scale: { x: 0.1, y: 0.1, z: 0.1 },
@@ -88,7 +88,7 @@ export const data = [
   },
   // ----------
   {
-    url: "./assets/pictures/7.jpg",
+    url: "./assets/pictures2/7.jpg",
     name: "名称",
     desc: "信息描述",
     scale: { x: 0.1, y: 0.1, z: 0.1 },
@@ -103,7 +103,7 @@ export const data = [
     type: "picture",
   },
   {
-    url: "./assets/pictures/8.jpg",
+    url: "./assets/pictures2/8.jpg",
     name: "名称",
     desc: "信息描述",
     scale: { x: 0.1, y: 0.1, z: 0.1 },
@@ -118,7 +118,7 @@ export const data = [
     type: "picture",
   },
   {
-    url: "./assets/pictures/9.jpg",
+    url: "./assets/pictures2/9.jpg",
     name: "名称",
     desc: "信息描述",
     scale: { x: 0.1, y: 0.1, z: 0.1 },
@@ -134,7 +134,7 @@ export const data = [
   },
   // ----
   {
-    url: "./assets/pictures/10.jpg",
+    url: "./assets/pictures2/10.jpg",
     name: "名称",
     desc: "信息描述",
     scale: { x: 0.1, y: 0.1, z: 0.1 },
@@ -149,7 +149,7 @@ export const data = [
     type: "picture",
   },
   {
-    url: "./assets/pictures/11.jpg",
+    url: "./assets/pictures2/11.jpg",
     name: "名称",
     desc: "信息描述",
     scale: { x: 0.1, y: 0.1, z: 0.1 },
@@ -164,28 +164,13 @@ export const data = [
     type: "picture",
   },
   {
-    url: "./assets/pictures/11.jpg",
-    name: "名称",
-    desc: "信息描述",
-    scale: { x: 0.1, y: 0.1, z: 0.1 },
-    position: {
-      x: -23.511271211314668,
-      y: 2.8281083131278727,
-      z: -0.7719575128025462,
-    },
-    view: { x: -16.795, y: 2.1, z: -0.371 },
-    id: "11-2",
-    rotation: { x: Math.PI, y: -Math.PI / 2, z: Math.PI },
-    type: "picture",
-  },
-  {
-    url: "./assets/pictures/12.jpg",
+    url: "./assets/pictures2/12.jpg",
     name: "名称",
     desc: "信息描述",
     scale: { x: 0.15, y: 0.15, z: 0.15 },
     position: {
       x: -23.509180685913343,
-      y: 2.5661518071328032,
+      y: 3.5661518071328032,
       z: -8.06571159562139,
     },
     view: { x: -17.731, y: 2.1, z: -7.814 },
@@ -195,7 +180,7 @@ export const data = [
   },
   // -----
   {
-    url: "./assets/pictures/13.jpg",
+    url: "./assets/pictures2/13.jpg",
     name: "名称",
     desc: "信息描述",
     scale: { x: 0.1, y: 0.1, z: 0.1 },
@@ -210,7 +195,7 @@ export const data = [
     type: "picture",
   },
   {
-    url: "./assets/pictures/14.jpg",
+    url: "./assets/pictures2/14.jpg",
     name: "名称",
     desc: "信息描述",
     scale: { x: 0.1, y: 0.1, z: 0.1 },
@@ -225,7 +210,7 @@ export const data = [
     type: "picture",
   },
   {
-    url: "./assets/pictures/15.jpg",
+    url: "./assets/pictures2/15.jpg",
     name: "名称",
     desc: "信息描述",
     scale: { x: 0.15, y: 0.15, z: 0.15 },
@@ -240,7 +225,7 @@ export const data = [
     type: "picture",
   },
   {
-    url: "./assets/pictures/16.jpg",
+    url: "./assets/pictures2/16.jpg",
     name: "名称",
     desc: "信息描述",
     scale: { x: 0.15, y: 0.15, z: 0.15 },
@@ -254,8 +239,24 @@ export const data = [
     rotation: { x: -Math.PI, y: 0, z: Math.PI },
     type: "picture",
   },
+
   {
-    url: "./assets/pictures/14.jpg",
+    url: "./assets/pictures2/17.jpg",
+    name: "名称",
+    desc: "信息描述",
+    scale: { x: 0.1, y: 0.1, z: 0.1 },
+    position: {
+      x: -23.511271211314668,
+      y: 2.8281083131278727,
+      z: -0.7719575128025462,
+    },
+    view: { x: -16.795, y: 2.1, z: -0.371 },
+    id: "17",
+    rotation: { x: Math.PI, y: -Math.PI / 2, z: Math.PI },
+    type: "picture",
+  },
+  {
+    url: "./assets/pictures2/18.jpg",
     name: "名称",
     desc: "信息描述",
     scale: { x: 0.15, y: 0.15, z: 0.15 },
@@ -265,12 +266,12 @@ export const data = [
       z: -8.972439438051218,
     },
     view: { x: 15.706, y: 2.5, z: -1.528 },
-    id: "14-2",
+    id: "18",
     rotation: { x: -Math.PI, y: 0, z: Math.PI },
     type: "picture",
   },
   {
-    url: "./assets/pictures/14.jpg",
+    url: "./assets/pictures2/19.jpg",
     name: "名称",
     desc: "信息描述",
     scale: { x: 0.1, y: 0.1, z: 0.1 },
@@ -281,12 +282,12 @@ export const data = [
       z: -11.688010195506259,
     },
     view: { x: 23.696, y: 2.1, z: -7.219 },
-    id: "14-3",
+    id: "19",
     rotation: { x: -Math.PI, y: 0, z: Math.PI },
     type: "picture",
   },
   {
-    url: "./assets/pictures/14.jpg",
+    url: "./assets/pictures2/20.jpg",
     name: "名称",
     desc: "信息描述",
     scale: { x: 0.1, y: 0.1, z: 0.1 },
@@ -297,7 +298,7 @@ export const data = [
       z: -11.688010195506259,
     },
     view: { x: 27.852, y: 2.1, z: -6.555 },
-    id: "14-4",
+    id: "20",
     rotation: { x: -Math.PI, y: 0, z: Math.PI },
     type: "picture",
   },

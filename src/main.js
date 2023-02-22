@@ -1,15 +1,16 @@
 import "./index.less";
-import VR3DHall from "./vrhall";
-import { data } from "./pictures2";
 import * as THREE from "three";
+import VRHall from "./vrhall";
+// import VRHall from "./lib/vrhall.es";
+import { data } from "./pictures2";
 
 // 因为模型所需，正常的gltf模型是不需要手动设置贴图的，这里是网上找的模型
 import * as m from "./materls";
 
 window.onload = function () {
   // 实例化
-  const vr = new VR3DHall({
-    debugger: true, // 开启调试模式
+  const vr = new VRHall({
+    debugger: false, // 开启调试模式
     maxSize: 20, // 画框最大尺寸
     movieHight: 2,
     container: document.getElementById("root"),
@@ -83,7 +84,7 @@ window.onload = function () {
           const info3d = gltf.scene.getObjectByName("jianjieqiang");
           info3d.material = new THREE.MeshBasicMaterial({
             color: 0xffffff,
-            map: new THREE.TextureLoader().load("./assets/pictures/main.jpg"),
+            map: new THREE.TextureLoader().load("./assets/pictures2/main.jpg"),
             // depthFunc: 3,
           });
         }
@@ -127,9 +128,20 @@ window.onload = function () {
   // 导览点
   let shtml = "";
   data.forEach((d) => {
-    shtml += `<li class="item" data-id="${d.id}">${d.name}:${d.id}</li>`;
+    shtml += `<li class="item" data-id="${d.id}">展品:${d.id}</li>`;
   });
+  shtml += `<li class="gravity">重力感应</li>`;
+
   $(".view").html(shtml);
+
+  $(".gravity").on("click", function () {
+    if (document.location.protocol === "https:") {
+      vr.gravity.toggle();
+    } else {
+      alert("需要开启https");
+    }
+  });
+
   $(".item").on("click", function () {
     const id = $(this).attr("data-id");
     vr.viewItem(id);

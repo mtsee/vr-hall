@@ -9,7 +9,7 @@ import Gravity from "./Gravity";
 
 CameraControls.install({ THREE: THREE });
 
-export class VR3DHall {
+export class VRHall {
   /**
    * 外部传入的配置
    */
@@ -228,6 +228,9 @@ export class VR3DHall {
     this._size.width = this._options.container.clientWidth;
     this._size.height = this._options.container.clientHeight;
     this._renderer.setSize(this._size.width, this._size.height);
+    // 更新相机的宽高比
+    this._camera.aspect = this._size.width / this._size.height;
+    this._camera.updateProjectionMatrix();
   }
 
   // 查看作品
@@ -577,5 +580,50 @@ export class VR3DHall {
       "mouseup",
       this._mouseUp.bind(this)
     );
+    window.removeEventListener("resize", this._resize.bind(this));
+
+    // 重力感应实例
+    this.gravity = null;
+    this.gravity.destroy();
+
+    this._renderer.dispose();
+
+    this._options = null;
+    // 渲染器
+    this._renderer = null;
+    // 相机
+    this._camera = null;
+    // 场景
+    this._scene = null;
+    // 时钟
+    this._clock = null;
+    // 控制器
+    this._controls = null;
+    // 动画实例
+    cancelAnimationFrame(this._requestAnimate);
+    this._requestAnimate = null;
+    // gltf加载器
+    this._gltfLoader = null;
+    // 屏幕射线
+    this._raycaster = null;
+    // 展厅模型
+    this._hallMesh = null;
+    // 展厅地板名称
+    this._planeMesh = null;
+    // 加载器
+    this._textLoader = null;
+    // 事件元素
+    this._eventMeshs = null;
+    // 控制器
+    this._transfromControls = null;
+
+    // 事件
+    this._events = null;
+
+    // 展品数据
+    this._itemsData = null;
+
+    // 动画
+    this._animates = null;
   }
 }

@@ -1,3 +1,3 @@
-import { VR3DHall } from "./VR3DHall";
+import { VRHall } from "./VRHall";
 
-export default VR3DHall;
+export default VRHall;
