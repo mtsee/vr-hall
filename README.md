@@ -8,7 +8,7 @@
 
 ```javascript
 // 实例化
-const vr = new VRHall({
+const vr = new VR3DHall({
   debugger: true, // 开启调试模式，开启调试模式后可以选中展品，缩放，旋转，位移，console.log中可以查看到数据
   maxSize: 25, // 画框最大尺寸
   movieHight: 1.5,

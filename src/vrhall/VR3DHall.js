@@ -2,12 +2,14 @@ import * as THREE from "three";
 import CameraControls from "camera-controls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { TransformControls } from "three/examples/jsm/controls/TransformControls";
+import { Reflector } from "./Reflector";
 import offset from "offset";
 import Gravity from "./Gravity";
+// import { VRButton } from "three/examples/jsm/webxr/VRButton.js";
 
 CameraControls.install({ THREE: THREE });
 
-export class VRHall {
+export class VR3DHall {
   /**
    * 外部传入的配置
    */
@@ -54,6 +56,7 @@ export class VRHall {
   _hallMesh = null;
   // 展厅地板名称
   _hallPlaneName = "plane";
+  _planeMesh = null;
   // 加载器
   _textLoader = new THREE.TextureLoader();
   // 事件元素
@@ -94,8 +97,33 @@ export class VRHall {
     this.gravity = new Gravity(this._controls);
   }
 
+  // initVRButton(target = document.body) {
+  //   this._renderer.xr.enabled = true;
+  //   this._renderer.xr.setReferenceSpaceType("local");
+  //   target.appendChild(VRButton.createButton(this._renderer));
+  // }
+
   addAnimate(afun) {
     this._animates.push(afun);
+  }
+
+  // 镜面反射
+  _reflectorPlane() {
+    // 镜面
+    const size = 1000;
+    const geometry = new THREE.PlaneBufferGeometry(size, size);
+    const verticalMirror = new Reflector(geometry, {
+      opacity: 0.1,
+      textureWidth: size,
+      textureHeight: size,
+      color: "#fff",
+    });
+    // const { scale } = this._params;
+    verticalMirror.material.transparent = true;
+    verticalMirror.material.opacity = 0.1;
+    verticalMirror.rotation.x = -Math.PI / 2;
+    verticalMirror.position.y = this._planeMesh.position.y - 0.01;
+    this._scene.add(verticalMirror);
   }
 
   /**
@@ -105,7 +133,7 @@ export class VRHall {
     // 初始化渲染器
     this._renderer = new THREE.WebGLRenderer({
       antialias: true, // 抗锯齿
-      alpha: false,
+      alpha: true,
       logarithmicDepthBuffer: true, // 解决部分Z-Fighting问题，会消耗性能, 安卓开启
     });
     this._renderer.setPixelRatio(window.devicePixelRatio);
@@ -356,7 +384,7 @@ export class VRHall {
     if (rayRes) {
       const { position, lookat, mesh } = rayRes;
       // 点击地面移动
-      console.log("rayRes", rayRes, position, {
+      console.log("rayRes", mesh, rayRes, position, {
         x: event.clientX - left,
         y: event.clientY - top,
       });
@@ -460,7 +488,13 @@ export class VRHall {
     this._hallPlaneName = params.planeName;
     const callback = (gltf) => {
       this._hallMesh = gltf.scene;
+      gltf.scene.traverse((mesh) => {
+        if (mesh.name === params.planeName) {
+          this._planeMesh = mesh;
+        }
+      });
       params.callback(gltf);
+      this._reflectorPlane();
     };
     await this.loadGLTF({ ...params, callback });
   }
@@ -484,7 +518,7 @@ export class VRHall {
       const geometry = new THREE.BoxGeometry(
         item.width,
         item.height,
-        item.depth ? item.depth : 5
+        item.depth ? item.depth : 2
       );
       const materialBorder = new THREE.MeshBasicMaterial({
         color: item.color ? item.color : "#ffffff",
