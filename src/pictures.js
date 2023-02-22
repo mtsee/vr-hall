@@ -5,7 +5,7 @@
  *   position: {x: 0, y: 0, z: 0},  // 模型位置
  *   rotation: {x: 0, y: 0, z: 0},  // 旋转角度
  *   view: {x: 0, y: 0, z: 0},  // 预览点的位置，移动到这里，看向position
- *   scale: 1,  // 缩放比例
+ *   scale: {x: 0, y: 0, z: 0},  // 缩放比例
  *   name: '名字',  // 名字
  *   desc: '描述说明',  // 描述说明
  *   url: '资源url',  // 资源url
