@@ -2,6 +2,8 @@
 
 基于 threejs 开发的 3D 展厅，展品可以自由摆放。支持 gltf/glb 格式
 
+视频教程：https://ke.qq.com/course/5960162#term_id=106182936
+
 ![图片](test.png)
 
 # 初始化实例
