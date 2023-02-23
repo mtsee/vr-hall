@@ -3,8 +3,24 @@ body {
   height: 100vh;
   width: 100vw;
 }
-
 #root {
-  width: 100%;
-  height: 100%;
+  height: 100vh;
+  width: 100vw;
+}
+.view {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 100;
+}
+.view li {
+  cursor: pointer;
+  list-style: none;
+  font-size: 12px;
+  padding: 4px 10px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }

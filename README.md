@@ -35,7 +35,6 @@ vr.loadHall({
   planeName: "meishu01",
   position: { x: 2, y: -0.2, z: 2 },
   scale: 1,
-  callback: (mesh) => {},
   onProgress: (p) => {
     console.log("加载进度", p);
   },
@@ -51,19 +50,9 @@ vr.loadGLTF({
   position: { x: 0, y: 0, z: 0 },
   rotation: { x: 0, y: -Math.PI / 2, z: 0 },
   scale: 0.2,
-  callback: (gltf) => {
-    // 调用动画
-    const mixer = new THREE.AnimationMixer(gltf.scene);
-    const ani = gltf.animations[0];
-    const AnimationAction = mixer.clipAction(ani);
-    AnimationAction.setDuration(5).play();
-    mixer.update(0);
-
-    // 加入动画
-    vr.addAnimate((d) => {
-      mixer.update(d);
-    });
-  },
+}).then((gltf) => {
+  // 创建动画
+  vr.createAnimate(gltf, { animateIndex: 0, duration: 5 });
 });
 ```
 

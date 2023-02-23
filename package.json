@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:web": "vite build --config vite.web.config.js",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "less": "^4.1.3",
+    "terser": "^5.16.5",
     "vite": "^4.0.0",
     "vite-plugin-externals": "^0.6.2",
     "vite-plugin-imp": "^2.3.1"

@@ -190,6 +190,10 @@ export class VRHall {
 
     // 光
     this._scene.add(new THREE.AmbientLight(0xffffff, 1));
+    // 平行光
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.7);
+    dirLight.position.set(5, 5, 5);
+    this._scene.add(dirLight);
 
     // 控制器，第一人称视角
     this._controls = new CameraControls(
@@ -262,6 +266,24 @@ export class VRHall {
     // 更新相机的宽高比
     this._camera.aspect = this._size.width / this._size.height;
     this._camera.updateProjectionMatrix();
+  }
+
+  createAnimate(
+    gltf,
+    { animateIndex, duration } = { animateIndex: 0, duration: 10 }
+  ) {
+    // 调用动画
+    const mixer = new THREE.AnimationMixer(gltf.scene);
+    const ani = gltf.animations[animateIndex];
+    const AnimationAction = mixer.clipAction(ani);
+    AnimationAction.setDuration(duration).play();
+    mixer.update(0);
+    // 加入动画
+    this.addAnimate((d) => {
+      mixer.update(d);
+    });
+
+    return mixer;
   }
 
   // 查看作品
@@ -478,17 +500,36 @@ export class VRHall {
    */
   loadGLTF(params) {
     return new Promise((resolve) => {
-      const { url, position, scale, rotation, onProgress, callback, animate } =
-        params;
+      const {
+        url,
+        position,
+        scale = 1,
+        rotation,
+        onProgress,
+        animate,
+        autoLight, // 自动增亮
+      } = params;
       this._gltfLoader.load(
         url,
         (gltf) => {
           const mesh = gltf.scene;
-
           const box = new THREE.Box3()
             .setFromObject(mesh)
             .getSize(new THREE.Vector3());
-          // console.log("box模型大小", box, mesh);
+          console.log("box模型大小", url, box, mesh);
+
+          if (autoLight) {
+            gltf.scene.traverse((child) => {
+              if (child.isMesh) {
+                // child.frustumCulled = false;
+                //模型阴影，开启阴影比较消耗性能
+                child.castShadow = true;
+                //模型自发光
+                child.material.emissive = child.material.color;
+                child.material.emissiveMap = child.material.map;
+              }
+            });
+          }
 
           mesh.scale.set(scale, scale, scale);
           if (position) {
@@ -502,19 +543,12 @@ export class VRHall {
             mesh.rotation.z = rotation.z;
           }
           this._scene.add(mesh);
-
           if (animate) {
             mesh.animations = animate;
           }
-
-          if (callback) {
-            callback(gltf);
-          }
-
-          resolve();
+          resolve(gltf);
         },
         (progress) => {
-          console.log(progress);
           if (onProgress) {
             onProgress(progress);
           }
@@ -538,18 +572,15 @@ export class VRHall {
    */
   async loadHall(params) {
     this._hallPlaneName = params.planeName;
-    const callback = (gltf) => {
+    return await this.loadGLTF({ ...params }).then((gltf) => {
       this._hallMesh = gltf.scene;
       gltf.scene.traverse((mesh) => {
         if (mesh.name === params.planeName) {
           this._planeMesh = mesh;
         }
       });
-      // 反光
-      // this._reflectorPlane();
-      params.callback(gltf);
-    };
-    await this.loadGLTF({ ...params, callback });
+      return gltf;
+    });
   }
 
   /**
