@@ -44,7 +44,15 @@ window.onload = function () {
     // 正常gltf模型无需设置这些参数，因为网上找的模型，直接拷贝过来的代码
     gltf.scene.traverse(function (child) {
       if (child.isMesh) {
-        const dm_OBJ = gltf.scene.getObjectByName("dm");
+        // ...
+      }
+
+      // if (child.material) {
+      //   child.material.emissiveMap = child.material.map;
+      // }
+    });
+    
+    const dm_OBJ = gltf.scene.getObjectByName("dm");
         dm_OBJ.material = m.dm_M;
         const dm2_OBJ = gltf.scene.getObjectByName("dm2");
         dm2_OBJ.material = m.wall_M;
@@ -96,12 +104,6 @@ window.onload = function () {
           map: new THREE.TextureLoader().load("./assets/pictures2/main.jpg"),
           // depthFunc: 3,
         });
-      }
-
-      // if (child.material) {
-      //   child.material.emissiveMap = child.material.map;
-      // }
-    });
   });
 
   // 加载机器人
