@@ -53,57 +53,57 @@ window.onload = function () {
     });
     
     const dm_OBJ = gltf.scene.getObjectByName("dm");
-        dm_OBJ.material = m.dm_M;
-        const dm2_OBJ = gltf.scene.getObjectByName("dm2");
-        dm2_OBJ.material = m.wall_M;
-        const qiang5_OBJ = gltf.scene.getObjectByName("qiang5");
-        qiang5_OBJ.material = m.qiang5_M;
-        const huaqiang1_OBJ = gltf.scene.getObjectByName("huaqiang1");
-        huaqiang1_OBJ.material = m.huaqiang1_M;
-        const huaqiang3_OBJ = gltf.scene.getObjectByName("huaqiang3");
-        huaqiang3_OBJ.material = m.huaqiang3_M;
-        const huaqiang2_OBJ = gltf.scene.getObjectByName("huaqiang2");
-        huaqiang2_OBJ.material = m.huaqiang2_M;
-        const qiang2_OBJ = gltf.scene.getObjectByName("qiang2");
-        qiang2_OBJ.material = m.qiang2_M;
-        const qiang3_OBJ = gltf.scene.getObjectByName("qiang3");
-        qiang3_OBJ.material = m.qiang3_M;
-        const qiang1_OBJ = gltf.scene.getObjectByName("qiang1");
-        qiang1_OBJ.material = m.qiang1_M;
-        const men2_OBJ = gltf.scene.getObjectByName("men2");
-        men2_OBJ.material = m.men2_M;
-        const chuanghu_OBJ = gltf.scene.getObjectByName("chuanghu");
-        chuanghu_OBJ.material = m.chuanghu_M;
-        const dingtiao_OBJ = gltf.scene.getObjectByName("dingtiao");
-        dingtiao_OBJ.material = m.dingtiao_M;
-        const dingbian_OBJ = gltf.scene.getObjectByName("dingbian");
-        dingbian_OBJ.material = m.dingbian_M;
-        const dizuo1_OBJ = gltf.scene.getObjectByName("dizuo1");
-        dizuo1_OBJ.material = m.dizuo1_M;
-        const qiang4_OBJ = gltf.scene.getObjectByName("qiang4");
-        qiang4_OBJ.material = m.qiang4_M;
-        const cebaiqiang_OBJ = gltf.scene.getObjectByName("cebaiqiang");
-        cebaiqiang_OBJ.material = m.ding_M;
-        const boli1_OBJ = gltf.scene.getObjectByName("boli1");
-        boli1_OBJ.material = m.boli1_M;
-        const dimian2_OBJ = gltf.scene.getObjectByName("dimian2");
-        dimian2_OBJ.material = m.dimian2_M;
-        const dimian3_OBJ = gltf.scene.getObjectByName("dimian3");
-        dimian3_OBJ.material = m.dimian3_M;
-        const deng_OBJ = gltf.scene.getObjectByName("deng");
-        deng_OBJ.material = m.deng_M;
-        const ding_OBJ = gltf.scene.getObjectByName("ding");
-        ding_OBJ.material = m.ding_M;
-        const baiding_OBJ = gltf.scene.getObjectByName("baiding");
-        baiding_OBJ.material = m.baiding_M;
+    dm_OBJ.material = m.dm_M;
+    const dm2_OBJ = gltf.scene.getObjectByName("dm2");
+    dm2_OBJ.material = m.wall_M;
+    const qiang5_OBJ = gltf.scene.getObjectByName("qiang5");
+    qiang5_OBJ.material = m.qiang5_M;
+    const huaqiang1_OBJ = gltf.scene.getObjectByName("huaqiang1");
+    huaqiang1_OBJ.material = m.huaqiang1_M;
+    const huaqiang3_OBJ = gltf.scene.getObjectByName("huaqiang3");
+    huaqiang3_OBJ.material = m.huaqiang3_M;
+    const huaqiang2_OBJ = gltf.scene.getObjectByName("huaqiang2");
+    huaqiang2_OBJ.material = m.huaqiang2_M;
+    const qiang2_OBJ = gltf.scene.getObjectByName("qiang2");
+    qiang2_OBJ.material = m.qiang2_M;
+    const qiang3_OBJ = gltf.scene.getObjectByName("qiang3");
+    qiang3_OBJ.material = m.qiang3_M;
+    const qiang1_OBJ = gltf.scene.getObjectByName("qiang1");
+    qiang1_OBJ.material = m.qiang1_M;
+    const men2_OBJ = gltf.scene.getObjectByName("men2");
+    men2_OBJ.material = m.men2_M;
+    const chuanghu_OBJ = gltf.scene.getObjectByName("chuanghu");
+    chuanghu_OBJ.material = m.chuanghu_M;
+    const dingtiao_OBJ = gltf.scene.getObjectByName("dingtiao");
+    dingtiao_OBJ.material = m.dingtiao_M;
+    const dingbian_OBJ = gltf.scene.getObjectByName("dingbian");
+    dingbian_OBJ.material = m.dingbian_M;
+    const dizuo1_OBJ = gltf.scene.getObjectByName("dizuo1");
+    dizuo1_OBJ.material = m.dizuo1_M;
+    const qiang4_OBJ = gltf.scene.getObjectByName("qiang4");
+    qiang4_OBJ.material = m.qiang4_M;
+    const cebaiqiang_OBJ = gltf.scene.getObjectByName("cebaiqiang");
+    cebaiqiang_OBJ.material = m.ding_M;
+    const boli1_OBJ = gltf.scene.getObjectByName("boli1");
+    boli1_OBJ.material = m.boli1_M;
+    const dimian2_OBJ = gltf.scene.getObjectByName("dimian2");
+    dimian2_OBJ.material = m.dimian2_M;
+    const dimian3_OBJ = gltf.scene.getObjectByName("dimian3");
+    dimian3_OBJ.material = m.dimian3_M;
+    const deng_OBJ = gltf.scene.getObjectByName("deng");
+    deng_OBJ.material = m.deng_M;
+    const ding_OBJ = gltf.scene.getObjectByName("ding");
+    ding_OBJ.material = m.ding_M;
+    const baiding_OBJ = gltf.scene.getObjectByName("baiding");
+    baiding_OBJ.material = m.baiding_M;
 
-        // 自定义info
-        const info3d = gltf.scene.getObjectByName("jianjieqiang");
-        info3d.material = new THREE.MeshBasicMaterial({
-          color: 0xffffff,
-          map: new THREE.TextureLoader().load("./assets/pictures2/main.jpg"),
-          // depthFunc: 3,
-        });
+    // 自定义info
+    const info3d = gltf.scene.getObjectByName("jianjieqiang");
+    info3d.material = new THREE.MeshBasicMaterial({
+      color: 0xffffff,
+      map: new THREE.TextureLoader().load("./assets/pictures2/main.jpg"),
+      // depthFunc: 3,
+    });
   });
 
   // 加载机器人
